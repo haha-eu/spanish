@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de bromas</title>
+  <style>
+    body {
+      background-color: #f7ecdf;
+      transition: background-color 0.5s ease;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      transform: translateY(-20px);
+      animation: slideIn 1s ease-in-out forwards;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .joke {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4caf50;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeInButton 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInButton {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .submit-joke {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .submit-joke a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .dark-mode {
+      background-color: #4d4c4c;
+    }
+
+    .switch-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .switch-label {
+      font-size: 20px;
+      margin-right: 5px;
+      color: #4caf50;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 20px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #fff;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4caf50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    .emoji {
+      font-size: 16px;
+      vertical-align: middle;
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 300px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+
+      .submit-joke {
+        font-size: 12px;
+      }
+
+      .switch-label {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>spanishjokes.eu.org - ¡Generador de bromas épicas!</h1>
+<div class="joke" id="jokeContainer">
+  <!-- The generated joke will appear here -->
+</div>
+<button onclick="generateJoke()">Crear Broma</button>
+<div class="submit-joke">
+  <a href="https://haha-eu.github.io/language/language_selection.html" target="_blank">English - 汉语 - 한국인</a>
+</div>
+<div class="switch-container">
+  <span class="switch-label">☀️</span>
+  <label class="switch">
+    <input type="checkbox" onclick="toggleDarkMode()">
+    <span class="slider"></span>
+  </label>
+  <span class="switch-label">🌙</span>
+</div>
+<div class="copyright">
+  &copy; 2023 spanishjokes.eu.org - Reservados todos los derechos.
+    </div>
+
+    <script>
+      function generateJoke() {
+        var jokes = [
+       "¿Cuál es el colmo de un astronauta? Tener mal espacio en su casa",
+
+"¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+
+"¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter",
+
+"¿Cuál es el colmo de un electricista? Tener mala corriente",
+
+"¿Qué le dice el semáforo al coche? No me mires, me estoy cambiando",
+
+"¿Qué le dice un gusano a otro gusano? Me voy a dar una vuelta a la manzana",
+
+"¿Cuál es el colmo de un jardinero? Olvidarse de regar las plantas y que se marchiten",
+
+"¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas",
+
+"¿Por qué los esqueletos no pelean entre sí? Porque se lastimarían los huesos",
+
+"¿Cuál es el colmo de un músico? Perder el compás",
+
+"¿Qué le dijo la papa al tomate? Nos vemos en el puré",
+
+"¿Cuál es el colmo de un zapatero? Perder el paso",
+
+"¿Por qué los pájaros no usan audífonos? Porque ya tienen sus propios tweeters",
+
+"¿Por qué los peces viven en el agua? Porque en tierra firme se mueren de sed",
+
+"¿Qué le dice una impresora a otra impresora? ¿Esa hoja es tuya o es una impresión mía?",
+
+"¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
+
+"¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+
+"¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter",
+
+"¿Cuál es el colmo de un electricista? Tener mala corriente",
+
+"¿Qué le dice el semáforo al coche? No me mires, me estoy cambiando",
+
+"¿Qué le dijo un gusano a otro gusano? Me voy a dar una vuelta a la manzana",
+
+"¿Cuál es el colmo de un jardinero? Olvidarse de regar las plantas y que se marchiten",
+
+"¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas",
+
+"¿Por qué los esqueletos no pelean entre sí? Porque se lastimarían los huesos",
+
+"¿Cuál es el colmo de un músico? Perder el compás",
+
+"¿Qué le dijo la papa al tomate? Nos vemos en el puré",
+
+"¿Cuál es el colmo de un zapatero? Perder el paso",
+
+"¿Por qué los pájaros no usan audífonos? Porque ya tienen sus propios tweeters",
+
+"¿Por qué el mar no se seca? Porque no tiene toalla",
+
+"¿Qué le dijo el 0 al 8? Bonito cinturón",
+
+"¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+
+"¿Cuál es el colmo de un astronauta? Perder el contacto",
+
+"¿Por qué el colmo de un zapatero es tener mal paso? Porque todos le dan de bota.",
+
+"¿Por qué las vacas van al espacio? Para encontrar la vaca-cia.",
+
+"¿Qué hace un pez con una guitarra? ¡Toca rock acuático!",
+
+"¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+
+"¿Qué le dice un gusano a su mamá? ¡Mamá, me voy a dar una vuelta a la manzana!",
+
+"¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+
+"¿Qué le dijo una impresora a otra impresora? ¿Esa hoja es tuya o es una impresión mía?",
+
+"¿Cuál es el colmo de un astronauta? Perder el contacto.",
+
+"¿Qué hace un pez con una guitarra? ¡Toca rock acuático!",
+
+"¿Por qué el colmo de un zapatero es tener mal paso? Porque todos le dan de bota.",
+
+"¿Qué le dice un gusano a su mamá? ¡Mamá, me voy a dar una vuelta a la manzana!",
+
+"¿Por qué las vacas van al espacio? Para encontrar la vaca-cia.",
+
+"¿Qué hace un pez con una guitarra? ¡Toca rock acuático!",
+
+"¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+
+"¿Qué le dijo una impresora a otra impresora? ¿Esa hoja es tuya o es una impresión mía?",
+
+"¿Cuál es el colmo de un astronauta? Perder el contacto.",
+
+"¿Qué hace un pez con una guitarra? ¡Toca rock acuático!",
+
+"¿Por qué el colmo de un zapatero es tener mal paso? Porque todos le dan de bota.",
+        ];
+
+        var jokeContainer = document.getElementById("jokeContainer");
+        var randomIndex = Math.floor(Math.random() * jokes.length);
+        jokeContainer.innerText = jokes[randomIndex];
+      }
+
+      function toggleDarkMode() {
+        var body = document.querySelector("body");
+        body.classList.toggle("dark-mode");
+      }
+    </script>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        var container = document.querySelector(".container");
+        container.style.opacity = "1";
+        container.style.transform = "translateY(0)";
+        var button = document.querySelector("button");
+        button.style.opacity = "1";
+      });
+    </script>
+  </div>
+</body>
+</html>
